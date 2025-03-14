@@ -10,7 +10,13 @@ exports.dowlloadPDF = (req, res, next) => {
   res.setHeader("Content-Dispostion", "inline");
   fs.readFile(filePath, (err, data) => {
     if (err) console.log(err);
-
     res.send(data);
   });
+};
+
+exports.dowlloadPDFstream = (req, res, next) => {
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Dispostion", "inline");
+  const readstream = fs.createReadStream(filePath);
+  readstream.pipe(res);
 };

@@ -8,6 +8,8 @@ const app = express();
 
 app.get("/pdfServer", pdfkitController.dowlloadPDF);
 
+app.get("/pdfStream", pdfkitController.dowlloadPDFstream);
+
 try {
   app.listen(8080);
 } catch (error) {
